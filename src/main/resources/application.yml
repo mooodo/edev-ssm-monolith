@@ -1,0 +1,17 @@
+server:
+  port: 8800
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://master:32306/edev?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: edev
+    password: edev1234
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  mapperLocations: classpath:mapper/*Mapper.xml
+logging:
+  level:
+    com.edev.trade: DEBUG
+    com.edev.trade.customer.dao: DEBUG

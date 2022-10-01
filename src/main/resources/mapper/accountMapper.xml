@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edev.trade.customer.dao.AccountDao">
+    <resultMap id="result" type="com.edev.trade.customer.entity.Account">
+        <id property="id" column="id"/>
+        <result property="balance" column="balance"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    <insert id="insert" keyProperty="id" parameterType="com.edev.trade.customer.entity.Account">
+        insert into t_account values(#{id},#{balance},#{createTime},#{updateTime})
+    </insert>
+    <update id="update" parameterType="com.edev.trade.customer.entity.Account">
+        update t_account set balance=#{balance},createTime=#{createTime},updateTime=#{updateTime}
+        where id=#{id}
+    </update>
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from t_account where id=#{accountId}
+    </delete>
+    <select id="load" parameterType="java.lang.Long" resultMap="result">
+        select * from t_account where id=#{accountId}
+    </select>
+</mapper>

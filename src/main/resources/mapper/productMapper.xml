@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.edev.trade.product.dao.ProductDao">
+    <resultMap id="result" type="com.edev.trade.product.entity.Product">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="price" column="price"/>
+        <result property="unit" column="unit"/>
+        <result property="classify" column="classify"/>
+        <result property="image" column="image"/>
+        <result property="originalPrice" column="original_price"/>
+        <result property="tip" column="tip"/>
+    </resultMap>
+    <insert id="insert" keyProperty="id" parameterType="com.edev.trade.product.entity.Product">
+        insert into t_product values(#{id},#{name},#{price},#{unit},null,#{classify},#{image},#{originalPrice},#{tip})
+    </insert>
+    <update id="update" parameterType="com.edev.trade.product.entity.Product">
+        update t_product set name=#{name},price=#{price},unit=#{unit},
+        classify=#{classify},image=#{image},original_price=#{originalPrice},tip=#{tip}
+        where id=#{id}
+    </update>
+    <delete id="delete" parameterType="java.lang.Long">
+        delete from t_product where id=#{id}
+    </delete>
+    <select id="load" parameterType="java.lang.Long" resultMap="result">
+        select * from t_product where id=#{id}
+    </select>
+</mapper>
